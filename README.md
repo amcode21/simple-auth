@@ -21,7 +21,7 @@ This is a simple key-based auth server written in [Node.js](https://nodejs.org).
         - **201 Created** returned if operation successful
     - **GET** /key/:id - *Gets key by ID and shows relevant information*
     - **PUT** /key/:id - *Updates key with [machineId](https://npmjs.com/package/node-machine-id) in request body*
-        - **Body:** ```json
+        - **Body:** ```
         {
             "machineId": "something"
         }```
@@ -29,14 +29,14 @@ This is a simple key-based auth server written in [Node.js](https://nodejs.org).
 
 - Other Endpoints
     - **POST** /key/verify - *Verifies if machineId and key in body are in database*
-         - **Body:** ```json
+         - **Body:** ```
         {
             "key": "something",
             "machineId": "something"
         }```
         - **200 OK** returned if operation successful
     - **POST** /key/active - *Checks whether key is currently bound to a specific device*
-         - **Body:** ```json
+         - **Body:** ```
         {
             "key": "something"
         }```
@@ -49,24 +49,26 @@ To add routes, there are only a few simple steps:
 - Create a new file in the `routes/` folder. This will become the base of the route. 
     - Creating a file called `example.js` creates a base route of `/example`
 - Add this code to begin with:
-    - ```js 
-    'use strict';
+```javascript 
+'use strict';
 
-    module.exports = (router) => {
-    
-        return router;
-    };```
-    - **Do __NOT__ remove the `module.exports` or anything already inside it.**
+module.exports = (router) => {
+
+    return router;
+};
+```
+**Do __NOT__ remove the `module.exports` or anything already inside it.**
 - To add routes, simply start coding like you would in a regular Express.js app!
-    - ```js 
-    'use strict';
+```js 
+'use strict';
 
-    module.exports = (router) => {
-        // GET /example/
-        router.get('/', (req, res) => res.send('hello there));
+module.exports = (router) => {
+    // GET /example/
+    router.get('/', (req, res) => res.send('hello there'));
 
-        // GET /test
-        router.get('/test', (req, res) => res.json({ message: 'this is a test' }));
+    // GET /test
+    router.get('/test', (req, res) => res.json({ message: 'this is a test' }));
 
-        return router;
-    };```
+    return router;
+};
+```
